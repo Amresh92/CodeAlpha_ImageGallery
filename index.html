@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>My Image Gallery</h1>
+
+<input type="file" id="fileInput">
+<select id="category">
+    <option value="nature">Nature</option>
+    <option value="cars">Cars</option>
+</select>
+
+<button onclick="addImage()">Add Photo</button>
+
+
+<div class="buttons">
+    <button onclick="filter('all')">All</button>
+    <button onclick="filter('nature')">Nature</button>
+    <button onclick="filter('cars')">Cars</button>
+</div>
+
+
+<div class="gallery">
+    <img src="images/n3.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n4.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n5.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n6.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n7.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n8.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n9.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n10.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n11.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n12.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n13.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n14.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n15.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n16.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n17.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n18.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/n19.jpg" class="nature" onclick="openImage(this)">
+    <img src="images/c3.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c4.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c5.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c6.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c7.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c8.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c9.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c10.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c11.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c12.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c13.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c14.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c15.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c16.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c17.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c18.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c19.jpg" class="cars" onclick="openImage(this)">
+    <img src="images/c20.jpg" class="cars" onclick="openImage(this)">
+</div>
+
+
+<div class="lightbox" id="lightbox">
+    <span onclick="closeImage()">❌</span>
+    <button onclick="prev()">⬅</button>
+    <img id="bigImage">
+    <button onclick="next()">➡</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
