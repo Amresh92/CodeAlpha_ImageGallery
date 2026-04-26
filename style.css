@@ -1,54 +1,86 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
+    margin: 0;
+    padding: 20px;
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
-    color: red;
-    
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+}
+
+h1 {
+    color: #d60000;
+    margin-bottom: 15px;
+}
+
+input, select, button {
+    padding: 8px 10px;
+    margin: 5px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+}
+
+.buttons {
+    margin: 15px 0;
+}
+
+.buttons button,
+button {
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #333;
+    transform: scale(1.05);
 }
 
 .gallery {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
     display: grid;
-    grid-template-columns: repeat(2, 200px);
-    gap: 10px;
-    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
 
 .gallery img {
     width: 100%;
-    height: 200px;      
-    object-fit: cover;  
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
     cursor: pointer;
     transition: 0.4s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
+
 .gallery img:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
-
-
-.buttons button {
-    background: black;
-    color: white;
-    border-radius: 5px;
-}
-
 
 .lightbox {
-    display: none;  
+    display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.9);
-
     justify-content: center;
     align-items: center;
+    z-index: 999;
 }
+
 .lightbox img {
-    max-width: 80%;
+    max-width: 85%;
     max-height: 80%;
-    margin-top: 50px;
-    animation: zoom 0.5s;
+    border-radius: 10px;
+    animation: zoom 0.4s;
 }
+
 .lightbox span {
     position: absolute;
     top: 20px;
@@ -58,12 +90,39 @@ body {
     cursor: pointer;
 }
 
-@keyframes zoom {
-    from {transform: scale(0.5);}
-    to {transform: scale(1);}
+.lightbox button {
+    font-size: 24px;
+    margin: 10px;
 }
+
+@keyframes zoom {
+    from { transform: scale(0.5); }
+    to { transform: scale(1); }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
 @media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
     .gallery {
         grid-template-columns: 1fr;
+    }
+
+    .gallery img {
+        height: 260px;
+    }
+
+    input, select, button {
+        width: 90%;
+        max-width: 300px;
     }
 }
