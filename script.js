@@ -59,6 +59,8 @@ document.addEventListener("keydown", function(e) {
 document.getElementById("lightbox").onclick = function(e) {
     if (e.target.id === "lightbox") closeImage();
 };
+
+
 function addImage() {
     let fileInput = document.getElementById("fileInput");
     let category = document.getElementById("category").value;
@@ -73,26 +75,60 @@ function addImage() {
     let reader = new FileReader();
 
     reader.onload = function(e) {
-        let gallery = document.querySelector(".gallery");
-
-        let img = document.createElement("img");
-        img.src = e.target.result;
-        img.className = category;
+        let imgData = e.target.result;
 
         
-        img.onclick = function() {
-            openImage(this);
-        };
+        let storedImages = JSON.parse(localStorage.getItem("gallery")) || [];
+        storedImages.push({src: imgData, category: category});
+        localStorage.setItem("gallery", JSON.stringify(storedImages));
 
-        gallery.appendChild(img);
+       
+        displayImage(imgData, category);
 
-
-        images.push(img.src);
-        img.setAttribute("data-index", images.length - 1);
-
-        
         fileInput.value = "";
     };
 
     reader.readAsDataURL(file);
+}
+
+
+
+function displayImage(src, category) {
+    let gallery = document.querySelector(".gallery");
+
+    let img = document.createElement("img");
+    img.src = src;
+    img.className = category;
+
+    img.onclick = function() {
+        openImage(this);
+    };
+
+    gallery.appendChild(img);
+
+    images.push(src);
+    img.setAttribute("data-index", images.length - 1);
+}
+
+
+window.onload = function() {
+    let imgTags = document.querySelectorAll(".gallery img");
+
+    imgTags.forEach((img, index) => {
+        images.push(img.src);
+        img.setAttribute("data-index", index);
+    });
+
+    
+    let storedImages = JSON.parse(localStorage.getItem("gallery")) || [];
+
+    storedImages.forEach(item => {
+        displayImage(item.src, item.category);
+    });
+};
+
+
+function clearGallery() {
+    localStorage.removeItem("gallery");
+    location.reload();
 }
