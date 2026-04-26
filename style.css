@@ -29,7 +29,7 @@ input, select, button {
 
 .buttons button,
 button {
-    background: black;
+    background-color: black;
     color: white;
     border: none;
     cursor: pointer;
@@ -75,10 +75,10 @@ button:hover {
 }
 
 .lightbox img {
-    max-width: 85%;
-    max-height: 80%;
+    width: 90vw;
+    height: 90vh;
+    object-fit: contain;
     border-radius: 10px;
-    animation: zoom 0.4s;
 }
 
 .lightbox span {
@@ -91,8 +91,26 @@ button:hover {
 }
 
 .lightbox button {
-    font-size: 24px;
-    margin: 10px;
+    position: absolute;
+    bottom: 30px;        
+    top: auto;           
+    transform: none;
+    font-size: 25px;
+    padding: 10px 15px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+
+.lightbox button:first-of-type {
+    left: 30%;
+}
+
+
+.lightbox button:last-of-type {
+    right: 30%;
 }
 
 @keyframes zoom {
@@ -100,14 +118,14 @@ button:hover {
     to { transform: scale(1); }
 }
 
-/* Tablet */
+
 @media (max-width: 900px) {
     .gallery {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Mobile */
+
 @media (max-width: 600px) {
     body {
         padding: 10px;
